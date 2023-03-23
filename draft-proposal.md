@@ -57,7 +57,7 @@ Besides my experience, I am very interested in robotics and programming and I re
 **Timeline**
 =====================
 
-## official overview
+## Official overview
 
 - **May 4**: accepted GSoC contributor projects announced;
 - **May 4 - May 28**: community Bonding Period | GSoC contributors get to know mentors, read documentation, get up to speed to begin working on their projects;
@@ -66,17 +66,16 @@ Besides my experience, I am very interested in robotics and programming and I re
 - **July 14 - August 21**: work Period | GSoC contributors work on their project with guidance from Mentors;
 - **August 21 - August 28**: final week.
 
-## details
+## Details
 
 - **before May 4**
   - communicate with mentors to understand the details and goals of the project;
   - do the homework
 
 - **May 4 - May 28**
-  - 
+  - active research about the project
 
 - **July 10 - July 14**
-  - 
   - prepare for phase 1 evaluation
 
 - **July 14 - August 21**
