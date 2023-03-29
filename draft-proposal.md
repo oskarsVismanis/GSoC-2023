@@ -12,10 +12,15 @@
 =====================
 - Name: [Better Parallel Planning with MoveIt 2](https://moveit.ros.org/events/2023-google-summer-of-code/#better-parallel-planning-with-moveit-2)
 - Mentors: Sebastian Jahr, Jafar Uruç
-- Possible goals:
+- Goals:
+  **Plan for accomplishing them in detail explained below**
   - **Enable parallel planning in the move_group interface**
   - **Make parallel planning usable in RVIZ Motion Planning Panel**
   - **Visualize different parallel planning solutions in RVIZ**
+- Deliverables:
+  - **The ability to choose and use the parallel planning pipeline from the move_group_interface**
+  - **Interactable parallel planning option in the RViz Motion Planning Panel**
+  - **Option to visualize the different solutions found while planning paralelly from the Displays panel**
 
 
 **About me**
@@ -34,7 +39,8 @@ Besides my experience, I am very interested in robotics and programming and I re
 =====================
 - Study ROS 2 and MoveIt 2, read MoveIt 2 concepts
 - Get familiar with open-source contributions by doing 1-2 "good first issue"'s
-- Study the "parallel planning API for moveit_cpp"
+- Study the "move_group_interface" planning pipeline and the "parallel planning API for
+  moveit_cpp"
 
 **Plan**
 =====================
@@ -42,17 +48,25 @@ Besides my experience, I am very interested in robotics and programming and I re
 - Steps
   1. **Enable parallel planning in the move_group interface**:
 
-        saa
+        Mainly the first thing to do would be to thoroughly understand how the existing planning process works in the move_group_interface. 
+        
+        My initial idea for accomplishing this task is by, first, adding the option to set the `setPlanningPipelineId` input to *parallel_planning*. This would also require the planner_id to allow multiple planner id's. Maybe with this setting the planner_id is required to be multiple strings. With this choice, the `MotionPlanResponse PlanningComponent::plan(...)` would be run, then, similar to the example, the shortest path would be chosen, or this could be left as an option for the user, to choose the first one found, the shortest, smoothest etc.
+        
+        Additional option is to make the parallel planning pipeline the default option, but have it by default be set to only one planner, and, when needed, you could just add other planners.
 
   2. **Make parallel planning usable in RVIZ Motion Planning Panel**:
 
-        dsa
+        First and foremost, I would like familiarize myself with how the Motion Planning Panel is set up codewise. See how everything is connected to the planning pipeline. 
+        
+        I feel like adding another drop down button for choosing the multiple planner option is the way to go, but setting it up in a way that you could just choose a second planner and it would automatically switch to the paralell planning sound easier for the user in my opinion. 
         
   3. **Visualize different parallel planning solutions in RVIZ**:
 
-        bda
-  
-- Support I need from community:: discuss with mentor in case of query.
+        Since the chosen plan is already being visualized, this should probably be a checkbox under the MotionPlanning part of the Displays panel. In this case the motion should only be planned, before being executed. The checkbox would probably go under the `Planned Path` part of the MotionPlanning Display Type. Maybe you could check each of the available plans and they would be made semi-transparent, and the color for each of them would be different by default and also open to change from the user. Then, when planning, each of the solutions could be shown depending on which checkboxes are ticked.
+        
+        This would also require me to first study the rviz_visual_tools code, to see how the Displays and MotionPlanning panels are set up, to add these options.  
+
+- At first my idea is to prioritize these tasks and only start a second one as the first one is finished. I feel like they kind of depend on each other in the order specified above, so they can't be done simultaneously anyways.
 
 **Timeline**
 =====================
